@@ -7,7 +7,7 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 // set handlebar configuration
-app.engine("handlebars", handlebars);
+app.engine("hbs", handlebars);
 
 app.set("view engine", "handlebars");
 
