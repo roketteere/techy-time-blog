@@ -1,0 +1,71 @@
+ .vs-dark-bg {
+    background-color: #1A1A1B;
+}
+
+.text-light {
+    color: #FFFFFF;
+}
+
+.code {
+    font-size: 20px;
+}
+
+.card {
+    background-color: #2E2F30;
+    border-color: #4E4F50;
+    color: #FFFFFF;
+}
+
+.card-title {
+    color: #FFFFFF;
+}
+
+.card-text {
+    color: #CCCCCC;
+}
+
+.btn-primary {
+    background-color: #FF4500;
+    border-color: #FF4500;
+}
+
+.btn-secondary {
+    background-color: #4E4F50;
+    border-color: #4E4F50;
+    color: #FFFFFF;
+}
+
+.btn {
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.btn:hover {
+    background-color: #FF4500;
+    border-color: #FF4500;
+}
+
+.navbar {
+    background-color: #1A1A1B;
+}
+
+.nav-link {
+    color: #FFFFFF;
+}
+
+.navbar-toggler-icon {
+    background-image: url('data:image/svg+xml,%3csvg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"%3e%3cpath stroke="rgba(255, 255, 255, 1)" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"/%3e%3c/svg%3e');
+}
+
+.lead {
+    color: #CCCCCC;
+}
+
+hr {
+    border-color: #4E4F50;
+}
+
+img {
+    max-width: 100%;
+}
+
