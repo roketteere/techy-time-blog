@@ -4,6 +4,7 @@ const router = require("express").Router();
 //Serves the body of the page aka "main.handlebars" to the container //aka "index.handlebars"
 router.get("/", (req, res) => {
   res.render("signup", {
+    logged: false,
     items: [
       {
         name: "signup",

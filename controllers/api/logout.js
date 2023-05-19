@@ -2,7 +2,15 @@ const router = require("express").Router();
 const bcrypt = require("bcrypt");
 
 router.get("/", (req, res) => {
-  res.json({ Message: "Logout Success!" });
+  req.session.username = null;
+  res.render("logout", {
+    logged: false,
+    items: [
+      {
+        name: "logout",
+      },
+    ],
+  });
 });
 
 module.exports = router;

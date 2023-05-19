@@ -3,10 +3,16 @@ const bcrypt = require("bcrypt");
 
 router.post("/", (req, res) => {
   const { username, email, password, cpassword } = req.body;
-
+  req.session.username = username;
   password === cpassword
     ? (req.body.password = bcrypt.hashSync(req.body.password, 3)) &&
-      res.status(200).json({ success: "Signed Up!" })
+      res.status(200).send(
+        req.session.username &&
+          `<script>
+    location.href = "/";
+      </script>
+`
+      )
     : res
         .status(400)
         .json({ error: "Passwords Do Not Match! Nice Try! =) 💉" });

@@ -2,10 +2,8 @@ const express = require("express");
 const routes = require("./controllers");
 const path = require("path");
 const { db } = require("./config"); // import sequelize connection obj as db
-const handlebars = require("express-handlebars").engine;
+const exphbs = require("express-handlebars");
 const session = require("express-session");
-const cookieParser = require("cookie-parser");
-const { Sequelize } = require("sequelize");
 SequelizeStore = require("connect-session-sequelize")(session.Store);
 
 // create app and port
@@ -16,7 +14,7 @@ const PORT = process.env.PORT || 3001;
 // Set up the Handlebars engine
 app.engine(
   "hbs",
-  handlebars({
+  exphbs.engine({
     extname: ".hbs",
     layoutsDir: __dirname + "/views/layouts",
     partialsDir: __dirname + "/views/partials",
@@ -30,14 +28,12 @@ app.set("view engine", "hbs");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
-app.use(cookieParser());
 app.use(
   session({
-    secret: "helloworld",
-    resave: true,
-    saveUninitialized: true,
-    cookie: { maxAge: 100000, secure: true },
-    sameSite: "none",
+    secret: "hello world",
+    resave: false,
+    saveUninitialized: false,
+    cookie: { maxAge: 1000 * 60 * 60 * 1 },
     store: new SequelizeStore({ db: db }),
   })
 );

@@ -1,12 +1,19 @@
-const router = require("express").Router();
+ const router = require("express").Router();
 const bcrypt = require("bcrypt");
 
 router.post("/", (req, res) => {
-  const { username, email, password, cpassword } = req.body;
+  const { username, password } = req.body;
+  req.session.username = username;
+  console.log(`Session Username: ${req.session.username}`);
 
-  password === cpassword
+  password && username
     ? (req.body.password = bcrypt.hashSync(req.body.password, 3)) &&
-      res.status(200).json({ success: "Signed Up!" })
+      res.status(200).send(
+        req.session.username &&
+          `<script>
+    location.href = "/";
+      </script>`
+      )
     : res
         .status(400)
         .json({ error: "Passwords Do Not Match! Nice Try! =) 💉" });
