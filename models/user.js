@@ -1,17 +1,22 @@
 const { Model, DataTypes } = require("sequelize");
-const db = require("../config/connection");
+const sequelize = require("../config/connection");
+const bcrypt = require("bcrypt");
 
-class User extends Model {}
+class User extends Model {
+  checkPassword(loginPassword) {
+    return bcrypt.compareSync(loginPassword, this.password);
+  }
+}
 
 User.init(
   {
-    validate(password) {
-      return bcrypt.compareSync(password, this.password);
-    },
     username: {
       type: DataTypes.STRING,
       allowNull: false,
       unique: true,
+      validate: {
+        len: [5, 20],
+      },
     },
 
     email: {
@@ -22,36 +27,25 @@ User.init(
         isEmail: true,
       },
     },
-
     password: {
       type: DataTypes.STRING,
       allowNull: false,
-      validate: {
-        isAlphanumeric: {
-          args: true,
-          msg: "Password must only contain letters and numbers",
-        },
-      },
-    },
-    blogs: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: "blogs",
-        key: "count",
-      },
     },
   },
   {
     hooks: {
-      beforeCreate: async (user) => {
-        user.password = await bcrypt.hash(user.password, 10);
-        return user;
+      beforeCreate: async (userData) => {
+        if (userData.password) {
+          userData.password = await bcrypt.hash(userData.password, 3);
+        }
       },
       beforeUpdate: async (updatedUser) => {
-        updatedUser.password = await bcrypt.hash(updatedUser.password, 10);
-        return updatedUser;
+        if (updatedUser.password) {
+          updatedUser.password = await bcrypt.hash(updatedUser.password, 3);
+        }
       },
     },
+
     sequelize,
     timestamps: true,
     freezeTableName: true,
@@ -59,3 +53,5 @@ User.init(
     modelName: "user",
   }
 );
+
+module.exports = User;

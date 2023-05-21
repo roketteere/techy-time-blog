@@ -1,48 +1,62 @@
 <div class="card mb-3">
   <div class="card-header bg-primary text-white">
-    <h3 id="post-user" class="card-header m-1">
-      <span class="text-dark">Posted By:</span>
-      <span class="text-warning">{{post.username}}</span>
-    </h3>
-    <h3 id="post-title">
-      <span class="text-dark">Title:</span>
-      <span class="text-warning">{{post.title}}</span>
+    {{#each users}}
+    <h3 id="post-user" class="blogs card-header m-1">
+      <span class="text-white fs-2">Title:</span>
+      <span class="text-dark fs-3">{{this.title}}</span>
+      <br />
+      <span class="text-white fs-4">Posted By:</span>
+      <span class="text-dark fs-5">{{this.username}}</span>
     </h3>
   </div>
   <div class="card-body">
     <p id="post-content" class="card-text text-white fs-5">Content:</p>
-    <textarea
-      readonly
+    <div
       class="form-control bg-dark text-light mb-3"
       id="post-content-input"
       name="post-content-input"
       rows="3"
-      required
-    >{{post.content}}</textarea>
+      readonly
+    >{{this.content}}</div>
+{{/each}}
+
     <div id="comments-section">
-      <h4 class="mt-3">Comments</h4>
-      {{#each post.comments}}
-        <div class="comment card mb-2">
-          <div class="card-body">
-            <p class="card-text comment-content fs-6">{{this}}</p>
+      <h4 class="mt-3">
+        <button
+          class="btn btn-link text-decoration-none"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#collapse-comments"
+          aria-expanded="true"
+          aria-controls="collapse-comments"
+        >
+          Comments
+        </button>
+      </h4>
+      <div class="collapse hide" id="collapse-comments">
+        {{#each post.comments}}
+          <div class="comment card mb-2">
+            <div class="card-body">
+              <p class="card-text comment-content fs-6">{{this}}</p>
+            </div>
           </div>
-        </div>
-      {{/each}}
-      <form id="comment-form">
-        <div class="mb-3">
-          <label for="comment-input" class="form-label">Add a Comment</label>
-          <textarea
-            class="form-control"
-            id="comment-input"
-            name="comment-input"
-            rows="3"
-            required
-          ></textarea>
-        </div>
-        <div class="text-center">
-          <button type="submit" class="btn btn-primary">Add Comment</button>
-        </div>
-      </form>
+        {{/each}}
+        <form id="comment-form">
+          <div class="mb-3">
+            <label for="comment-input" class="form-label">Add a Comment</label>
+            <textarea
+              class="form-control bg-dark text-light"
+              id="comment-input"
+              name="comment-input"
+              rows="3"
+              required
+            ></textarea>
+          </div>
+          <div class="text-center">
+            <button type="submit" class="btn btn-primary">Add Comment</button>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
 </div>

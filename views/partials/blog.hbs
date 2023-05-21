@@ -1,105 +1,62 @@
-<!-- Category 1 -->
-<div class="card mb-3">
-  <div class="card-header bg-primary text-white">
-    <h3 id="cat-qa">Q & A's</h3>
-  </div>
-  <div class="card-body">
-    <div class="card mb-3">
-      <div class="row g-0">
-        <div class="col-md-4">
-          <img src="https://picsum.photos/400/200" alt="Article Image" />
-        </div>
-        <div class="col-md-8">
-          <div class="card-body">
-            <h5 class="card-title">Title of Article</h5>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur
-              adipiscing elit. Duis sed laoreet magna. Pellentesque tincidunt,
-              turpis at rhoncus commodo, ante quam ullamcorper dui, quis
-              volutpat turpis magna ac lacus.</p>
-            <div>
-              <button class="btn btn-sm btn-secondary">Like</button>
-              <button class="btn btn-sm btn-secondary">Share</button>
-              <span class="bg-primary text-white">by username, Jan 1 2022,
-                10:00am</span>
+<div class="blog-container">
+  {{#each blogs}}
+    <div class="card mb-3 blogs">
+      <div class="card-header bg-primary text-white">
+        <h3 id="cat-qa"><span class="bold">Title:</span>
+          <span
+            class="border rounded fs-4 text-white bg-danger p-1 b-1"
+          >{{this.title}}</span>
+        </h3>
+      </div>
+      <div class="card-body">
+        <div class="card mb-3">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img src="https://picsum.photos/400/200" alt="Article Image" />
             </div>
-            <a href="#" class="btn btn-primary">Read more</a>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title fs-3">By:
+                  {{this.username}}
+                  <span
+                    class="text-success"
+                    id="postid"
+                  >POST_ID:{{this.id}}</span></h5>
+                <div class="collapse" id="collapse-{{@index}}">
+                  <p class="card-text">{{this.content}}
+                  </p>
+                </div>
+                <div class="p-4">
+                  <button class="btn btn-sm btn-secondary">
+                    <i class="bi bi-hand-thumbs-up"></i>
+                  </button>
+                  <button class="btn btn-sm btn-secondary">
+                    <i class="bi bi-share"></i>
+                  </button>
+                  <br />
+                  <br /><span
+                    class="border rounded p-1 m-2 bg-primary text-white"
+                  >Posted: {{this.createdAt}}</span>
+                  <br />
+                  <br /><span
+                    class="border rounded p-1 m-2 bg-success text-white"
+                  >Updated: {{this.updatedAt}}</span>
+                </div>
+                <a
+                  class="btn btn-primary m-2"
+                  data-bs-toggle="collapse"
+                  href="#collapse-{{@index}}"
+                  role="button"
+                  aria-expanded="false"
+                  aria-controls="collapse-{{@index}}"
+                >
+                  Read more
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
-
-<!-- Category 2 -->
-<div class="card mb-3">
-  <div class="card-header bg-primary text-white">
-    <h3 id="cat-scm">Share - Collaborate - Mentor</h3>
-  </div>
-  <div class="card-body">
-    <div class="card mb-3">
-      <div class="row g-0">
-        <div class="col-md-4">
-          <img src="https://picsum.photos/400/200" alt="Article Image" />
-        </div>
-        <div class="col-md-8">
-          <div class="card-body">
-            <h5 class="card-title">Title of Article</h5>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur
-              adipiscing elit. Duis sed laoreet magna. Pellentesque tincidunt,
-              turpis at rhoncus commodo, ante quam ullamcorper dui, quis
-              volutpat turpis magna ac lacus.</p>
-            <div>
-              <button class="btn btn-sm btn-secondary">Like</button>
-
-              <button class="btn btn-sm btn-secondary">Share</button>
-              <span class="bg-primary text-white">by username, Jan 1 2022,
-                10:00am</span>
-            </div>
-            <a href="#" class="btn btn-primary">Read more</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- Category 3--><div class="card mb-3">
-  <div class="card-header bg-primary text-white">
-    <h3 id="cat-how">How To's</h3>
-  </div>
-  <div class="card-body">
-    <div class="card mb-3">
-      <div class="row g-0">
-        <div class="col-md-4">
-          <img
-            id="img-how"
-            src="https://picsum.photos/400/200"
-            alt="Article Image"
-          />
-        </div>
-        <div class="col-md-8">
-          <div class="card-body">
-            <h5 id="title-how" class="card-title">Title of Article</h5>
-            <p id="text-how" class="card-text">Lorem ipsum dolor sit amet,
-              consectetur adipiscing elit. Duis sed laoreet magna. Pellentesque
-              tincidunt, turpis at rhoncus commodo, ante quam ullamcorper dui,
-              quis volutpat turpis magna ac lacus.</p>
-            <div>
-              <button id="like-how" class="btn btn-sm btn-secondary"><i
-                  class="bi bi-hand-thumbs-up"
-                ></i>
-                Like</button>
-
-              <button id="share-how" class="btn btn-sm btn-secondary"><i
-                  class="bi bi-share"
-                ></i>
-                Share</button>
-              <span id="stamp-how" class="bg-primary text-white">by username,
-                Jan 1 2022, 10:00am</span>
-            </div>
-            <a id="read-how" href="#" class="btn btn-primary">Read more</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  {{/each}}
 </div>
