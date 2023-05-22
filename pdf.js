@@ -1,200 +1,55 @@
-`
+async function addRole() {
+  try {
+    const results = await new Promise((resolve, reject) => {
+      db.query("SELECT name FROM department", (err, results) => {
+        if (err) reject(err);
+        resolve(results);
+      });
+    });
 
-4
-ESA Suites - Seattle - Redmond
-15805 NE 28th St, Bellevue 98008 US
-4258856675
-RMD@extendedstay.com
-Date Range: Feb 26, 2023 - Jul 09, 2023
-Tax ID : 
-Guest Folio
-Confirmation Number - 9729233421
-Primary Guest Additional Guests
-Guest Name JOEL PEREZ
-Address 920 SW 131ST WAY, 
-City, State, Zip Code DAVIE FL 33325
-Country USA
-BRITTANY PEREZ
-Stay Details Company Details Other Details
-Check In Date Feb 26, 2023
-Check Out Date Jul 09, 2023
-Room STD2DN - 322
-Source Website
-Guests 2/2
-Name Aya
-Healthcare
-Stipend -
-HIGH_PRIOR-
-ITY
-Tax ID
-PO Number
-Travel Agent
-IATA
-Name
-Bill Number
-Tax Exemption YES
-Tax Exempt
-Date
-Mar 27, 2023
-Summary
-Type Amount
-40000 - Room Rent $13,571.47
-42006 - WiFi $31.99
-42500 - Early Check in Fee $0.00
-Sales Tax $3.23
-State Room Tax $0.00
-CREDIT CARD $6,751.19
-Folio Balance $6,855.50
-Check In Time
-Check Out Time
-11:20 AM Thank you for choosing Extended Stay America. We look forward to your stay with us!
-Page 1 of 4
-Folio Running Balance by Date
-Date Charges Payments Balance
-Feb 26, 2023 $126.81 $641.13 ($514.32)
-Feb 27, 2023 $91.59 $0.00 ($422.73)
-Feb 28, 2023 $91.59 $0.00 ($331.14)
-Mar 01, 2023 $91.59 $0.00 ($239.55)
-Mar 02, 2023 $91.59 $0.00 ($147.96)
-Mar 03, 2023 $91.59 $0.00 ($56.37)
-Mar 04, 2023 $91.59 $0.00 $35.22
-Mar 05, 2023 $91.59 $676.35 ($549.54)
-Mar 06, 2023 $91.59 $0.00 ($457.95)
-Mar 07, 2023 $91.59 $0.00 ($366.36)
-Mar 08, 2023 $91.59 $0.00 ($274.77)
-Mar 09, 2023 $91.59 $0.00 ($183.18)
-Mar 10, 2023 $91.59 $0.00 ($91.59)
-Mar 11, 2023 $91.59 $0.00 $0.00
-Mar 12, 2023 $91.59 $641.13 ($549.54)
-Mar 13, 2023 $91.59 $0.00 ($457.95)
-Mar 14, 2023 $91.59 $0.00 ($366.36)
-Mar 15, 2023 $91.59 $0.00 ($274.77)
-Mar 16, 2023 $91.59 $0.00 ($183.18)
-Mar 17, 2023 $91.59 $0.00 ($91.59)
-Mar 18, 2023 $91.59 $0.00 $0.00
-Mar 19, 2023 $91.59 $641.13 ($549.54)
-Mar 20, 2023 $91.59 $0.00 ($457.95)
-Mar 21, 2023 $91.59 $0.00 ($366.36)
-Mar 22, 2023 $91.59 $0.00 ($274.77)
-Mar 23, 2023 $91.59 $0.00 ($183.18)
-Mar 24, 2023 $91.59 $0.00 ($91.59)
-Mar 25, 2023 $91.59 $0.00 $0.00
-Mar 26, 2023 $78.76 $641.13 ($562.37)
-Mar 27, 2023 ($265.98) $0.00 ($828.35)
-Mar 28, 2023 $68.79 $0.00 ($759.56)
-Mar 29, 2023 $68.79 $0.00 ($690.77)
-Mar 30, 2023 $68.79 $0.00 ($621.98)
-Mar 31, 2023 $68.79 $0.00 ($553.19)
-Apr 01, 2023 $71.99 $0.00 ($481.20)
-Apr 02, 2023 $71.99 $0.00 ($409.21)
-Apr 03, 2023 $71.99 $641.13 ($978.35)
-Apr 04, 2023 $71.99 $0.00 ($906.36)
-Apr 05, 2023 $71.99 $0.00 ($834.37)
-Apr 06, 2023 $71.99 $0.00 ($762.38)
-Apr 07, 2023 $71.99 $0.00 ($690.39)
-Apr 08, 2023 $71.99 $0.00 ($618.40)
-Apr 09, 2023 $71.99 $0.00 ($546.41)
-Apr 10, 2023 $71.99 $641.13 ($1,115.55)
-Apr 11, 2023 $71.99 $0.00 ($1,043.56)
-Apr 12, 2023 $71.99 $0.00 ($971.57)
-Apr 13, 2023 $71.99 $0.00 ($899.58)
-Apr 14, 2023 $71.99 $0.00 ($827.59)
-Apr 15, 2023 $71.99 $0.00 ($755.60)
-Apr 16, 2023 $71.99 $0.00 ($683.61)
-Apr 17, 2023 $71.99 $322.25 ($933.87)
-Apr 18, 2023 $71.99 $0.00 ($861.88)
-Apr 19, 2023 $71.99 $0.00 ($789.89)
-Check In Time
-Check Out Time
-11:20 AM Thank you for choosing Extended Stay America. We look forward to your stay with us!
-Page 2 of 4
-Apr 20, 2023 $71.99 $0.00 ($717.90)
-Apr 21, 2023 $71.99 $0.00 ($645.91)
-Apr 22, 2023 $71.99 $0.00 ($573.92)
-Apr 23, 2023 $71.99 $575.92 ($1,077.85)
-Apr 24, 2023 $71.99 $0.00 ($1,005.86)
-Apr 25, 2023 $71.99 $0.00 ($933.87)
-Apr 26, 2023 $71.99 $0.00 ($861.88)
-Apr 27, 2023 $71.99 $0.00 ($789.89)
-Apr 28, 2023 $71.99 $0.00 ($717.90)
-Apr 29, 2023 $71.99 $0.00 ($645.91)
-Apr 30, 2023 $71.99 $587.93 ($1,161.85)
-May 01, 2023 $83.99 $0.00 ($1,077.86)
-May 02, 2023 $83.99 $0.00 ($993.87)
-May 03, 2023 $83.99 $0.00 ($909.88)
-May 04, 2023 $83.99 $0.00 ($825.89)
-May 05, 2023 $83.99 $0.00 ($741.90)
-May 06, 2023 $83.99 $0.00 ($657.91)
-May 07, 2023 $83.99 $0.00 ($573.92)
-May 08, 2023 $83.99 $0.00 ($489.93)
-May 09, 2023 $83.99 $0.00 ($405.94)
-May 10, 2023 $83.99 $0.00 ($321.95)
-May 11, 2023 $83.99 $0.00 ($237.96)
-May 12, 2023 $83.99 $741.96 ($895.93)
-May 13, 2023 $127.99 $0.00 ($767.94)
-May 14, 2023 $127.99 $0.00 ($639.95)
-May 15, 2023 $127.99 $0.00 ($511.96)
-May 16, 2023 $127.99 $0.00 ($383.97)
-May 17, 2023 $127.99 $0.00 ($255.98)
-May 18, 2023 $127.99 $0.00 ($127.99)
-May 19, 2023 $127.99 $0.00 $0.00
-May 20, 2023 $127.99 $0.00 $127.99
-May 21, 2023 $127.99 $0.00 $255.98
-May 22, 2023 $127.99 $0.00 $383.97
-May 23, 2023 $127.99 $0.00 $511.96
-May 24, 2023 $127.99 $0.00 $639.95
-May 25, 2023 $127.99 $0.00 $767.94
-May 26, 2023 $127.99 $0.00 $895.93
-May 27, 2023 $127.99 $0.00 $1,023.92
-May 28, 2023 $127.99 $0.00 $1,151.91
-May 29, 2023 $127.99 $0.00 $1,279.90
-May 30, 2023 $127.99 $0.00 $1,407.89
-May 31, 2023 $127.99 $0.00 $1,535.88
-Jun 01, 2023 $139.99 $0.00 $1,675.87
-Jun 02, 2023 $139.99 $0.00 $1,815.86
-Jun 03, 2023 $139.99 $0.00 $1,955.85
-Jun 04, 2023 $139.99 $0.00 $2,095.84
-Jun 05, 2023 $139.99 $0.00 $2,235.83
-Jun 06, 2023 $139.99 $0.00 $2,375.82
-Jun 07, 2023 $139.99 $0.00 $2,515.81
-Jun 08, 2023 $139.99 $0.00 $2,655.80
-Jun 09, 2023 $139.99 $0.00 $2,795.79
-Jun 10, 2023 $139.99 $0.00 $2,935.78
-Jun 11, 2023 $139.99 $0.00 $3,075.77
-Jun 12, 2023 $139.99 $0.00 $3,215.76
-Jun 13, 2023 $139.99 $0.00 $3,355.75
-Check In Time
-Check Out Time
-11:20 AM Thank you for choosing Extended Stay America. We look forward to your stay with us!
-Page 3 of 4
-Jun 14, 2023 $139.99 $0.00 $3,495.74
-Jun 15, 2023 $139.99 $0.00 $3,635.73
-Jun 16, 2023 $139.99 $0.00 $3,775.72
-Jun 17, 2023 $139.99 $0.00 $3,915.71
-Jun 18, 2023 $139.99 $0.00 $4,055.70
-Jun 19, 2023 $139.99 $0.00 $4,195.69
-Jun 20, 2023 $139.99 $0.00 $4,335.68
-Jun 21, 2023 $139.99 $0.00 $4,475.67
-Jun 22, 2023 $139.99 $0.00 $4,615.66
-Jun 23, 2023 $139.99 $0.00 $4,755.65
-Jun 24, 2023 $139.99 $0.00 $4,895.64
-Jun 25, 2023 $139.99 $0.00 $5,035.63
-Jun 26, 2023 $139.99 $0.00 $5,175.62
-Jun 27, 2023 $139.99 $0.00 $5,315.61
-Jun 28, 2023 $139.99 $0.00 $5,455.60
-Jun 29, 2023 $139.99 $0.00 $5,595.59
-Jun 30, 2023 $139.99 $0.00 $5,735.58
-Jul 01, 2023 $139.99 $0.00 $5,875.57
-Jul 02, 2023 $139.99 $0.00 $6,015.56
-Jul 03, 2023 $139.99 $0.00 $6,155.55
-Jul 04, 2023 $139.99 $0.00 $6,295.54
-Jul 05, 2023 $139.99 $0.00 $6,435.53
-Jul 06, 2023 $139.99 $0.00 $6,575.52
-Jul 07, 2023 $139.99 $0.00 $6,715.51
-Jul 08, 2023 $139.99 $0.00 $6,855.50
-Check In Time
-Check Out Time
-11:20 AM Thank you for choosing Extended Stay America. We look forward to your stay with us!
-Page 4 of 4
+    const choices = results.map((result) => result.name);
 
-`;
+    const answers = await inquirer.prompt([
+      {
+        type: "input",
+        name: "title",
+        message: "What is the new role's title?",
+      },
+      {
+        type: "input",
+        name: "salary",
+        message: "What is the new role's salary?",
+      },
+      {
+        type: "list",
+        name: "department",
+        message: "What is the new role's department?",
+        choices: choices,
+      },
+    ]);
+
+    let department_id;
+    for (let i = 0; i < results.length; i++) {
+      if (answers.department === results[i].name) {
+        department_id = results[i].id;
+      }
+    }
+
+    const query = `
+      INSERT INTO role (title, salary, department_id)
+      VALUES (?, ?, (SELECT id FROM department WHERE name = ?))
+    `;
+    const values = [answers.title, answers.salary, answers.department];
+
+    await new Promise((resolve, reject) => {
+      db.query(query, values, (err, res) => {
+        if (err) reject(err);
+        resolve(res);
+      });
+    });
+
+    // startApp();
+  } catch (err) {
+    throw err;
+  }
+}
